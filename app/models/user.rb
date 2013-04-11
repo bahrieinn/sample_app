@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password # built in rails method that provides authentication/encryption/password_digest comparison
 
-  before_save { |user| user.email = email.downcase }
+  before_save { email.downcase! }
 
   validates :name, presence: true, length: { maximum: 50 }
 
